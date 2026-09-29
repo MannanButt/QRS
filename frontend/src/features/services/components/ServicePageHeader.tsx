@@ -1,19 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, ChevronLeft, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, PhoneCall, X } from "lucide-react";
 import { Brand } from "@/src/components/brand/Brand";
+import { phoneHref, qrsSite } from "@/src/config/site";
 
-type ServicePageHeaderProps = {
-  backHref?: string;
-  backLabel?: string;
-};
-
-export function ServicePageHeader({
-  backHref = "/",
-  backLabel = "Back to Home",
-}: ServicePageHeaderProps) {
+export function ServicePageHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const callNowHref = phoneHref(qrsSite.contact.primaryPhone ?? "03124130449");
 
   return (
     <div className="ds-service-header-wrap">
@@ -22,17 +16,20 @@ export function ServicePageHeader({
           <Brand compact />
         </a>
 
-        <nav aria-label="Service page navigation" className="ds-service-header-nav">
-          <a href={backHref} className="ds-service-header-back">
-            <ChevronLeft size={15} /> {backLabel}
-          </a>
+        <nav aria-label="Primary navigation" className="ds-service-header-nav">
+          <a href="/">Home</a>
           <a href="/#services">Services</a>
           <a href="/#projects">Our projects</a>
+          <a href="/about-company">About Company</a>
+          <a href="/blogs">Blogs</a>
         </nav>
 
-        <div>
+        <div className="ds-service-header-actions">
+          <a href={callNowHref} className="ds-service-header-call">
+            Call Now <PhoneCall size={14} aria-hidden="true" />
+          </a>
           <a href="/book-a-demo" className="ds-service-header-cta">
-            Book a demo <ArrowUpRight size={14} aria-hidden="true" />
+            Schedule Meeting <ArrowUpRight size={14} aria-hidden="true" />
           </a>
           <button
             type="button"
@@ -48,10 +45,13 @@ export function ServicePageHeader({
 
       {menuOpen && (
         <nav aria-label="Mobile service page navigation" className="ds-service-mobile-nav">
-          <a href={backHref} onClick={() => setMenuOpen(false)}>{backLabel}</a>
+          <a href="/" onClick={() => setMenuOpen(false)}>Home</a>
           <a href="/#services" onClick={() => setMenuOpen(false)}>Services</a>
           <a href="/#projects" onClick={() => setMenuOpen(false)}>Our projects</a>
-          <a href="/book-a-demo" onClick={() => setMenuOpen(false)}>Book a demo</a>
+          <a href="/about-company" onClick={() => setMenuOpen(false)}>About Company</a>
+          <a href="/blogs" onClick={() => setMenuOpen(false)}>Blogs</a>
+          <a href={callNowHref} onClick={() => setMenuOpen(false)}>Call Now</a>
+          <a href="/book-a-demo" onClick={() => setMenuOpen(false)}>Schedule Meeting</a>
         </nav>
       )}
     </div>

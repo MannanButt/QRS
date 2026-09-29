@@ -104,7 +104,7 @@ export function ServiceDetailView({ detail, heroImage = "/assets/images/home/her
 
   return (
     <div className="ds-services-page">
-      <ServicePageHeader backHref="/#services" backLabel="Back to Services" />
+      <ServicePageHeader />
 
       <section className="ds-service-detail-hero" data-service-reveal>
         <div className="ds-service-hero-media" aria-hidden="true">
@@ -116,7 +116,7 @@ export function ServiceDetailView({ detail, heroImage = "/assets/images/home/her
           <p className="ds-service-hero-lede">{detail.heroSubtitle || detail.headline}</p>
           <p className="ds-service-hero-description">{detail.shortDescription || detail.description}</p>
           <div className="ds-service-actions">
-            <a href="/book-a-demo" className="ds-service-primary">Book a demo <ArrowRight size={16} /></a>
+            <a href="/book-a-demo" className="ds-service-primary">Schedule Meeting <ArrowRight size={16} /></a>
             <a href="#deliverables" className="ds-service-secondary">View deliverables</a>
           </div>
           <div className="ds-service-hero-stats" aria-label="Service outcomes">
@@ -188,7 +188,7 @@ export function ServiceDetailView({ detail, heroImage = "/assets/images/home/her
           <h2>Ready to make {detail.title.toLowerCase()} work harder?</h2>
           <p>Talk with a QRS specialist about the right scope, sequence, and next step for your team.</p>
         </div>
-        <a href="/book-a-demo" className="ds-service-primary">Book a strategy call <ArrowUpRight size={16} /></a>
+        <a href="/book-a-demo" className="ds-service-primary">Schedule Meeting <ArrowUpRight size={16} /></a>
       </section>
 
       <AgencyFooter />

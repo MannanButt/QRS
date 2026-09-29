@@ -8,15 +8,19 @@ import { ServicePageHeader } from "./ServicePageHeader";
 export function ServiceHubView({ config }: { config: HubPageConfig }) {
   const { eyebrow, heading, description, groupSlug, services, ctaHeading, ctaDescription, ctaButtonText } = config;
   const heroImage = {
-    "ai-automation": "/assets/images/services/menu-ai-automation.jpg",
+    "ai-automation": "/assets/images/services/menu-ai-automation-robot.png",
     "marketing-seo": "/assets/images/services/menu-marketing-seo.jpg",
+    "gmb-seo-aeo": "/assets/images/services/menu-marketing-seo.jpg",
     development: "/assets/images/services/menu-development.jpg",
     design: "/assets/images/services/menu-design.jpg",
+    "mobile-app-development": "/assets/images/services/menu-mobile-app-development.png",
+    "social-media-ppc": "/assets/images/services/menu-social-media-ppc.png",
+    "ecommerce-development": "/assets/images/services/menu-ecommerce-development.png",
   }[groupSlug] ?? "/assets/images/home/hero-workflow.jpg";
 
   return (
     <div className="ds-services-page">
-      <ServicePageHeader backHref="/" backLabel="Back to Home" />
+      <ServicePageHeader />
 
       <section className="ds-service-hub-hero">
         <div className="ds-service-hero-media" aria-hidden="true">

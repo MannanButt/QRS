@@ -15,14 +15,14 @@ export const qrsSite = {
   description: "QRS Technologies helps businesses plan, build, automate, and grow with practical digital solutions.",
   contact: {
     email: publicValue(process.env.NEXT_PUBLIC_QRS_CONTACT_EMAIL),
-    primaryPhone: publicValue(process.env.NEXT_PUBLIC_QRS_PRIMARY_PHONE),
+    primaryPhone: "03124130449",
     secondaryPhone: publicValue(process.env.NEXT_PUBLIC_QRS_SECONDARY_PHONE),
-    whatsappNumber: publicValue(process.env.NEXT_PUBLIC_QRS_WHATSAPP_NUMBER),
+    whatsappNumber: "923124130449",
   },
   social: {
     instagram: "https://www.instagram.com/qrstechnologies_pvt.ltd/",
-    linkedin: publicValue(process.env.NEXT_PUBLIC_QRS_LINKEDIN_URL),
-    facebook: publicValue(process.env.NEXT_PUBLIC_QRS_FACEBOOK_URL),
+    linkedin: "https://www.linkedin.com/in/abdullah-khurram-a0a22724a",
+    facebook: "https://www.facebook.com/profile.php?id=61594678926146&sk=grid",
     youtube: publicValue(process.env.NEXT_PUBLIC_QRS_YOUTUBE_URL),
   },
 } as const;

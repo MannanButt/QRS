@@ -1,13 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, ArrowUpRight, Check, Menu, Star, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Menu, PhoneCall, Star, X } from "lucide-react";
 import { Brand } from "@/src/components/brand/Brand";
 import { AgencyFooter } from "@/src/components/layout/AgencyFooter";
-import { qrsSite } from "@/src/config/site";
+import { phoneHref, qrsSite } from "@/src/config/site";
 import { ResponsiveImage } from "@/src/components/ui/ResponsiveImage";
 import { heroImages } from "@/src/features/home/data/content";
 import { serviceMenuGroups } from "@/src/features/services/data/services";
+
+const reasonsToChooseQrs = [
+  { number: "01", title: "One connected team", copy: "Strategy, design, engineering, and growth expertise work together from the start—so decisions stay aligned." },
+  { number: "02", title: "Built around outcomes", copy: "We focus the work on the customer, operational, or revenue result that makes the biggest difference to your business." },
+  { number: "03", title: "Clear, practical delivery", copy: "You see the plan, progress, and priorities at every stage, with solutions your team can confidently own." },
+] as const;
 
 const approachSteps = [
   {
@@ -100,6 +106,7 @@ export default function HomePage() {
   const [activeReview, setActiveReview] = useState(0);
   const activeStep = approachSteps[activeApproach];
   const visibleReviews = [0, 1, 2].map((offset) => reviews[(activeReview + offset) % reviews.length]);
+  const callNowHref = phoneHref(qrsSite.contact.primaryPhone ?? "03124130449");
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -157,7 +164,7 @@ export default function HomePage() {
       <section className="qrs-hero" aria-label={`${qrsSite.name} digital services`}>
         <div className="qrs-hero-media" aria-hidden="true">
           {heroImages.map((image, index) => (
-            <div className={`qrs-hero-slide${index === activeHero ? " is-active" : ""}`} key={image.src}>
+            <div className={`qrs-hero-slide${index === activeHero ? " is-active" : ""}`} key={`${image.src}-${index}`}>
               <ResponsiveImage
                 source={image.src}
                 widths={[768, 1280, 1920]}
@@ -175,14 +182,19 @@ export default function HomePage() {
         <header className="qrs-header">
           <a href="#top" aria-label={`${qrsSite.name} home`} onClick={closeMenu}><Brand light /></a>
           <nav className={`qrs-nav${menuOpen ? " is-open" : ""}`} aria-label="Primary navigation">
+            <a href="#top" onClick={closeMenu}>Home</a>
             <a href="#services" onClick={closeMenu}>Services</a>
             <a href="#projects" onClick={closeMenu}>Our projects</a>
-            <a href="#approach" onClick={closeMenu}>Our approach</a>
             <a href="#reviews" onClick={closeMenu}>Reviews</a>
+            <a href="/about-company" onClick={closeMenu}>About Company</a>
+            <a href="/blogs" onClick={closeMenu}>Blogs</a>
             <a href="#contact" onClick={closeMenu}>Contact</a>
+            <a href={callNowHref} className="qrs-mobile-nav-action" onClick={closeMenu}>Call Now</a>
+            <a href="/book-a-demo" className="qrs-mobile-nav-action" onClick={closeMenu}>Schedule Meeting</a>
           </nav>
           <div className="qrs-header-actions">
-            <a href="/book-a-demo" className="qrs-header-cta">Book a demo <ArrowUpRight size={15} aria-hidden="true" /></a>
+            <a href={callNowHref} className="qrs-header-call">Call Now <PhoneCall size={15} aria-hidden="true" /></a>
+            <a href="/book-a-demo" className="qrs-header-cta">Schedule Meeting <ArrowUpRight size={15} aria-hidden="true" /></a>
             <button type="button" className="qrs-menu-button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -196,8 +208,8 @@ export default function HomePage() {
             <p>{qrsSite.description} From strategy to launch, we bring the right people, process, and technology together.</p>
             <blockquote className="qrs-hero-quote">“Progress happens when technology makes work clearer, faster, and more human.”</blockquote>
             <div className="qrs-hero-actions">
-              <a href="#services" className="qrs-button qrs-button--primary">Explore services <ArrowRight size={16} aria-hidden="true" /></a>
-              <a href="/book-a-demo" className="qrs-button qrs-button--secondary">Book a demo <ArrowUpRight size={16} aria-hidden="true" /></a>
+              <a href={callNowHref} className="qrs-button qrs-button--primary">Call Now <ArrowRight size={16} aria-hidden="true" /></a>
+              <a href="/book-a-demo" className="qrs-button qrs-button--secondary">Schedule Meeting <ArrowUpRight size={16} aria-hidden="true" /></a>
             </div>
           </div>
         </div>
@@ -246,6 +258,25 @@ export default function HomePage() {
                 {activeStep.outcomes.map((outcome) => <li key={outcome}><Check size={15} aria-hidden="true" />{outcome}</li>)}
               </ul>
             </div>
+          </div>
+        </section>
+
+        <section className="qrs-why-choose" aria-labelledby="why-choose-title">
+          <div className="qrs-why-choose-intro" data-reveal>
+            <div>
+              <span className="qrs-section-kicker">WHY CHOOSE QRS</span>
+              <h2 id="why-choose-title">A capable partner for the work that matters next.</h2>
+            </div>
+            <p>QRS brings the right capabilities into one focused team, making it easier to move from a good idea to a useful, measurable result.</p>
+          </div>
+          <div className="qrs-why-choose-grid">
+            {reasonsToChooseQrs.map((reason, index) => (
+              <article className="qrs-why-choose-card" key={reason.number} data-reveal style={{ transitionDelay: `${index * 90}ms` }}>
+                <span>{reason.number}</span>
+                <h3>{reason.title}</h3>
+                <p>{reason.copy}</p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -302,7 +333,7 @@ export default function HomePage() {
               </article>
             ))}
           </div>
-          <a href="/book-a-demo" className="qrs-projects-link" data-reveal>Discuss your project <ArrowUpRight size={16} aria-hidden="true" /></a>
+          <a href="/book-a-demo" className="qrs-projects-link" data-reveal>Schedule a project meeting <ArrowUpRight size={16} aria-hidden="true" /></a>
         </section>
 
         <section className="qrs-reviews" id="reviews" aria-labelledby="reviews-title" data-reveal>
@@ -338,7 +369,7 @@ export default function HomePage() {
             <h2 id="qrs-cta-title">Ready to turn an idea into progress?</h2>
             <p>Tell us about your goal, challenge, or opportunity. QRS will help you define a practical way forward.</p>
           </div>
-          <a href="/book-a-demo" className="qrs-button qrs-button--light">Book a demo <ArrowUpRight size={16} aria-hidden="true" /></a>
+          <a href="/book-a-demo" className="qrs-button qrs-button--light">Schedule Meeting <ArrowUpRight size={16} aria-hidden="true" /></a>
         </section>
       </main>
 

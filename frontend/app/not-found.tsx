@@ -56,10 +56,10 @@ export default function NotFound() {
               Development Services
             </Link>
             <Link
-              href="/services/marketing-seo"
+              href="/services/gmb-seo-aeo"
               className="ds-not-found-secondary"
             >
-              Marketing & SEO Services
+              GMB, SEO & AEO Services
             </Link>
           </div>
         </div>

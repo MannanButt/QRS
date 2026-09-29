@@ -46,7 +46,7 @@ export function AgencyFooter() {
               )}
               {contact.whatsappNumber && (
                 <a href={whatsappHref(contact.whatsappNumber)} className="vx-footer-contact-link" target="_blank" rel="noopener noreferrer">
-                  <Phone size={16} /> WhatsApp QRS
+                  <Phone size={16} /> WhatsApp: 0312 4130449
                 </a>
               )}
               {mailLimitMessage && <p role="status">{mailLimitMessage}</p>}
@@ -61,7 +61,7 @@ export function AgencyFooter() {
           </div>
 
           <div className="vx-footer-col">
-            <h4>Development</h4>
+            <h4>Web Development</h4>
             <ul>
               <li><a href="/services/development">Web &amp; App Engineering</a></li>
               <li><a href="/services/development">AI Product Development</a></li>
@@ -81,20 +81,39 @@ export function AgencyFooter() {
           </div>
 
           <div className="vx-footer-col">
-            <h4>Marketing &amp; SEO</h4>
+            <h4>GMB, SEO &amp; AEO</h4>
             <ul>
-              <li><a href="/services/marketing-seo">Technical SEO</a></li>
-              <li><a href="/services/marketing-seo">Performance Marketing</a></li>
-              <li><a href="/services/marketing-seo">Growth Strategy</a></li>
+              <li><a href="/services/gmb-seo-aeo">Google Business Profile</a></li>
+              <li><a href="/services/gmb-seo-aeo">Search Engine Optimization</a></li>
+              <li><a href="/services/gmb-seo-aeo">Answer Engine Optimization</a></li>
             </ul>
           </div>
 
           <div className="vx-footer-col">
-            <h4>Product Design</h4>
+            <h4>Mobile Apps</h4>
             <ul>
-              <li><a href="/services/design">UX &amp; UI Design</a></li>
-              <li><a href="/services/design">Design Systems</a></li>
-              <li><a href="/services/design">Interactive Prototypes</a></li>
+              <li><a href="/services/mobile-app-development">iOS &amp; Android Apps</a></li>
+              <li><a href="/services/mobile-app-development">Flutter &amp; React Native</a></li>
+              <li><a href="/services/mobile-app-development">App UI/UX</a></li>
+            </ul>
+          </div>
+
+          <div className="vx-footer-col">
+            <h4>Growth &amp; Commerce</h4>
+            <ul>
+              <li><a href="/services/social-media-ppc">Social Media &amp; PPC</a></li>
+              <li><a href="/services/social-media-ppc">Meta &amp; Google Ads</a></li>
+              <li><a href="/services/ecommerce-development">E-Commerce Development</a></li>
+              <li><a href="/services/ecommerce-development">Shopify &amp; WooCommerce</a></li>
+            </ul>
+          </div>
+
+          <div className="vx-footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="/about-company">About Company</a></li>
+              <li><a href="/blogs">Blogs</a></li>
+              <li><a href="/book-a-demo">Schedule Meeting</a></li>
             </ul>
           </div>
         </div>

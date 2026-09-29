@@ -17,7 +17,7 @@ function createSrcSet(source: string, widths: readonly number[], extension: "avi
 }
 
 export function ResponsiveImage({ source, widths, sizes, alt, ...props }: ResponsiveImageProps) {
-  if (/^https?:\/\//i.test(source)) {
+  if (/^https?:\/\//i.test(source) || /\.png(?:[?#]|$)/i.test(source)) {
     return <img {...props} src={source} alt={alt} />;
   }
 

@@ -26,26 +26,34 @@ const serviceOptions: Record<string, string[]> = {
     "Document intelligence",
     "Governance and observability",
   ],
-  "Web and app development": [
+  "Web development": [
     "Web and app engineering",
     "AI product development",
     "API and systems integration",
     "Cloud and DevOps",
     "Quality automation",
   ],
-  "Marketing and SEO": [
-    "Technical SEO",
-    "Content systems",
-    "Performance marketing",
-    "Lifecycle automation",
-    "Revenue analytics",
+  "GMB, SEO and AEO": [
+    "Google Business Profile (GMB)",
+    "Search Engine Optimization (SEO)",
+    "Answer Engine Optimization (AEO)",
   ],
-  "Product and UX design": [
-    "Product strategy",
-    "UX and UI design",
-    "Design systems",
-    "Interactive prototypes",
-    "Conversion funnels",
+  "Mobile application development": [
+    "iOS and Android apps",
+    "Flutter or React Native apps",
+    "Mobile app UI/UX",
+  ],
+  "Social media marketing and PPC": [
+    "Meta Ads",
+    "Google Ads",
+    "TikTok Ads",
+    "Amazon Ads",
+    "Social media handling",
+  ],
+  "E-commerce development": [
+    "Shopify development",
+    "WordPress / WooCommerce",
+    "Figma and UI/UX",
   ],
 };
 
@@ -174,11 +182,11 @@ export default function BookDemoPage() {
 
   return (
     <div className="ds-booking-page">
-      <ServicePageHeader backHref="/" backLabel="Back to Home" />
+      <ServicePageHeader />
 
       <main className="ds-booking-main">
         <section className="ds-booking-intro" aria-labelledby="booking-title">
-          <span className="ds-booking-kicker">Book a demo</span>
+          <span className="ds-booking-kicker">Schedule a meeting</span>
           <h1 id="booking-title">Let&apos;s make the next step concrete.</h1>
           <p>
             Tell us what you are building, improving, or automating. A QRS specialist will review your goals and get back to you with a practical next step.
@@ -198,7 +206,7 @@ export default function BookDemoPage() {
 
         <section className="ds-booking-form-section" aria-labelledby="booking-form-title">
           <div className="ds-booking-form-heading">
-            <span className="ds-booking-kicker">Book a demo</span>
+            <span className="ds-booking-kicker">Schedule a meeting</span>
             <h2 id="booking-form-title">Share a little context.</h2>
             <p>Every field is required so our team can prepare a focused response before we contact you.</p>
           </div>
@@ -257,9 +265,11 @@ export default function BookDemoPage() {
               }} required>
                 <option value="">Select a service</option>
                 <option value="AI agents and automation">AI agents and automation</option>
-                <option value="Web and app development">Web and app development</option>
-                <option value="Marketing and SEO">Marketing and SEO</option>
-                <option value="Product and UX design">Product and UX design</option>
+                <option value="Web development">Web development</option>
+                <option value="GMB, SEO and AEO">GMB, SEO and AEO</option>
+                <option value="Mobile application development">Mobile application development</option>
+                <option value="Social media marketing and PPC">Social media marketing and PPC</option>
+                <option value="E-commerce development">E-commerce development</option>
                 <option value="Something else">Something else</option>
               </select>
             </label>

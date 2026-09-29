@@ -16,10 +16,15 @@
   margin: 0 auto;
 }
 
-/* 5 Column Grid */
+/* Preserve the original black-and-purple mark on the dark footer without a logo background. */
+.vx-agency-footer .vx-brand-logo {
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, .96)) drop-shadow(0 3px 8px rgba(13, 6, 29, .48));
+}
+
+/* Contact column plus six supporting link columns */
 .vx-agency-footer-grid {
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1.3fr repeat(6, minmax(0, 1fr));
   gap: 40px clamp(20px, 3vw, 44px);
   margin-bottom: 64px;
 }

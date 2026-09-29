@@ -2,15 +2,27 @@
 
 .ds-service-header-wrap { position: absolute; top: 20px; left: 0; right: 0; z-index: 50; padding: 0 46px; }
 .ds-service-header { width: min(100%, 1400px); min-height: 68px; margin: 0 auto; padding: 8px 0; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 32px; background: transparent; border: 0; border-radius: 0; box-shadow: none; }
-.ds-service-header .vx-brand-logo { height: 50px; max-width: 190px; }
+.ds-service-header .vx-brand-logo { height: 50px; max-width: 190px; filter: drop-shadow(0 0 1px rgba(255,255,255,.96)) drop-shadow(0 3px 8px rgba(13,6,29,.48)); }
 .ds-service-header-nav { display: flex; justify-content: center; align-items: center; gap: clamp(24px, 3.2vw, 52px); }
 .ds-service-header-nav a, .ds-service-header-back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.82); font-size: 14px; font-weight: 700; letter-spacing: .01em; transition: color 180ms ease; }
 .ds-service-header-nav a:hover, .ds-service-header-back:hover { color: #fff; }
 .ds-service-header-back { color: #fff; }
 .ds-service-header-cta { display: inline-flex; align-items: center; gap: 8px; padding: 13px 19px; border-radius: 999px; background: var(--qrs-color-brand); color: #fff; font-size: 12px; font-weight: 850; box-shadow: 0 8px 22px rgba(109, 40, 217, .3); transition: transform 180ms ease, box-shadow 180ms ease; }
 .ds-service-header-cta:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(109,40,217,.42); }
+.ds-service-header-actions { display: flex; align-items: center; gap: 9px; }
+.ds-service-header-call { display: inline-flex; align-items: center; gap: 7px; padding: 12px 15px; border: 1px solid rgba(216,180,254,.64); border-radius: 999px; background: rgba(23,11,49,.24); color: #fff; font-size: 12px; font-weight: 850; transition: transform 180ms ease, background 180ms ease; }
+.ds-service-header-call:hover { transform: translateY(-1px); background: rgba(109,40,217,.42); }
 .ds-service-menu-toggle { display: none; align-items: center; justify-content: center; width: 42px; height: 42px; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; background: transparent; color: #fff; cursor: pointer; }
 .ds-service-mobile-nav { display: none; }
+
+@media (max-width: 1050px) {
+  .ds-service-header-wrap { top: 12px; padding-inline: 20px; }
+  .ds-service-header { min-height: 60px; padding: 7px 8px 7px 17px; grid-template-columns: 1fr auto; gap: 10px; }
+  .ds-service-header-nav, .ds-service-header-call, .ds-service-header-cta { display: none; }
+  .ds-service-menu-toggle { display: inline-flex; }
+  .ds-service-mobile-nav { display: grid; gap: 4px; width: min(100%, 520px); margin: 8px auto 0; padding: 10px; border: 1px solid #cdb8f4; background: var(--qrs-color-ink); box-shadow: 0 14px 30px rgba(23,11,49,.22); }
+  .ds-service-mobile-nav a { padding: 11px 12px; color: #f3e8ff; font-size: 14px; font-weight: 700; }
+}
 
 .ds-service-hub-hero, .ds-service-detail-hero { position: relative; isolation: isolate; width: 100%; min-height: 720px; background-position: center; background-size: cover; background-repeat: no-repeat; color: #fff; }
 .ds-service-hero-media, .ds-service-hero-media picture, .ds-service-hero-media img { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -113,7 +125,7 @@
   .ds-service-header-wrap { top: 12px; padding: 0 14px; }
   .ds-service-header { min-height: 60px; padding: 7px 8px 7px 17px; grid-template-columns: 1fr auto; gap: 10px; }
   .ds-service-header .vx-brand-logo { height: 39px; max-width: 154px; }
-  .ds-service-header-nav, .ds-service-header-cta { display: none; }
+  .ds-service-header-nav, .ds-service-header-call, .ds-service-header-cta { display: none; }
   .ds-service-menu-toggle { display: inline-flex; }
   .ds-service-mobile-nav { display: grid; gap: 4px; width: min(100%, 520px); margin: 8px auto 0; padding: 10px; border: 1px solid #b9d7ee; background: #071a37; box-shadow: 0 14px 30px rgba(1,12,32,.22); }
   .ds-service-mobile-nav a { padding: 11px 12px; color: #e6f2ff; font-size: 14px; font-weight: 700; }

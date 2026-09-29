@@ -15,7 +15,7 @@ export const serviceMenuGroups: readonly ServiceGroup[] = [
     title: "AI Automation",
     eyebrow: "Intelligent operations",
     description: "AI agents and dependable workflows designed around how your teams actually work.",
-    image: "/assets/images/services/menu-ai-automation.jpg",
+    image: "/assets/images/services/menu-ai-automation-robot.png",
     imagePosition: "center center",
     services: [
       "AI Workflow Automation",
@@ -26,23 +26,21 @@ export const serviceMenuGroups: readonly ServiceGroup[] = [
     ],
   },
   {
-    id: "marketing-seo",
-    title: "Marketing & SEO",
-    eyebrow: "Measurable growth",
-    description: "Connected search, content, performance, and lifecycle systems that compound growth.",
+    id: "gmb-seo-aeo",
+    title: "GMB, SEO & AEO",
+    eyebrow: "Search visibility",
+    description: "Make your business easier to find, trust, and choose across Google, search results, and answer engines.",
     image: "/assets/images/services/menu-marketing-seo.jpg",
     imagePosition: "center center",
     services: [
-      "Technical SEO",
-      "AI Content Systems",
-      "Performance Marketing",
-      "CRM & Lifecycle Automation",
-      "Analytics & Attribution",
+      "Google Business Profile",
+      "Search Engine Optimization",
+      "Answer Engine Optimization",
     ],
   },
   {
     id: "development",
-    title: "Development",
+    title: "Web Development",
     eyebrow: "Production engineering",
     description: "Secure digital products, integrations, and platforms engineered for scale.",
     image: "/assets/images/services/menu-development.jpg",
@@ -56,18 +54,44 @@ export const serviceMenuGroups: readonly ServiceGroup[] = [
     ],
   },
   {
-    id: "design",
-    title: "Design",
-    eyebrow: "Human-centred systems",
-    description: "Research-led experiences and design systems that make complex products feel simple.",
-    image: "/assets/images/services/menu-design.jpg",
+    id: "mobile-app-development",
+    title: "Mobile App Development",
+    eyebrow: "iOS & Android products",
+    description: "Useful mobile experiences designed and developed for the way your customers use their phones every day.",
+    image: "/assets/images/services/menu-mobile-app-development.png",
     imagePosition: "center center",
     services: [
-      "Product Strategy",
-      "UX & UI Design",
-      "Design Systems",
-      "Rapid Prototyping",
-      "Conversion Experience Design",
+      "iOS & Android App Development",
+      "Flutter & React Native",
+      "Mobile App UI/UX",
+    ],
+  },
+  {
+    id: "social-media-ppc",
+    title: "Social Media Marketing & PPC",
+    eyebrow: "Paid & social growth",
+    description: "Campaigns, content, and channel management that turn attention into qualified leads and sales.",
+    image: "/assets/images/services/menu-social-media-ppc.png",
+    imagePosition: "center center",
+    services: [
+      "Meta Ads",
+      "Google Ads",
+      "TikTok Ads",
+      "Amazon Ads",
+      "Social Media Handling",
+    ],
+  },
+  {
+    id: "ecommerce-development",
+    title: "E-Commerce Development",
+    eyebrow: "Conversion-ready stores",
+    description: "Fast, easy-to-manage online stores built for product discovery, checkout confidence, and growth.",
+    image: "/assets/images/services/menu-ecommerce-development.png",
+    imagePosition: "center center",
+    services: [
+      "Shopify Development",
+      "WordPress & WooCommerce",
+      "Figma & UI/UX",
     ],
   },
 ] as const;
@@ -85,12 +109,10 @@ export const SERVICE_ITEM_ROUTES: Record<string, string> = {
   "Document Intelligence": "/services/ai-automation/document-intelligence",
   "Governance & Observability": "/services/ai-automation/governance-observability",
 
-  // Marketing & SEO sub-services
-  "Technical SEO": "/services/marketing-seo/technical-seo",
-  "AI Content Systems": "/services/marketing-seo/ai-content-systems",
-  "Performance Marketing": "/services/marketing-seo/performance-marketing",
-  "CRM & Lifecycle Automation": "/services/marketing-seo/crm-lifecycle-automation",
-  "Analytics & Attribution": "/services/marketing-seo/analytics-attribution",
+  // GMB, SEO & AEO sub-services
+  "Google Business Profile": "/services/gmb-seo-aeo/google-business-profile",
+  "Search Engine Optimization": "/services/gmb-seo-aeo/search-engine-optimization",
+  "Answer Engine Optimization": "/services/gmb-seo-aeo/answer-engine-optimization",
 
   // Development sub-services
   "Web & App Engineering": "/services/development/web-app-engineering",
@@ -99,12 +121,22 @@ export const SERVICE_ITEM_ROUTES: Record<string, string> = {
   "Cloud & DevOps": "/services/development/cloud-devops",
   "Quality Automation": "/services/development/quality-automation",
 
-  // Design sub-services
-  "Product Strategy": "/services/design/product-strategy",
-  "UX & UI Design": "/services/design/ux-ui-design",
-  "Design Systems": "/services/design/design-systems",
-  "Rapid Prototyping": "/services/design/rapid-prototyping",
-  "Conversion Experience Design": "/services/design/conversion-experience-design",
+  // Mobile application sub-services
+  "iOS & Android App Development": "/services/mobile-app-development/ios-android-app-development",
+  "Flutter & React Native": "/services/mobile-app-development/flutter-react-native",
+  "Mobile App UI/UX": "/services/mobile-app-development/mobile-app-ui-ux",
+
+  // Social media marketing and PPC sub-services
+  "Meta Ads": "/services/social-media-ppc/meta-ads",
+  "Google Ads": "/services/social-media-ppc/google-ads",
+  "TikTok Ads": "/services/social-media-ppc/tiktok-ads",
+  "Amazon Ads": "/services/social-media-ppc/amazon-ads",
+  "Social Media Handling": "/services/social-media-ppc/social-media-handling",
+
+  // E-commerce development sub-services
+  "Shopify Development": "/services/ecommerce-development/shopify-development",
+  "WordPress & WooCommerce": "/services/ecommerce-development/wordpress-woocommerce",
+  "Figma & UI/UX": "/services/ecommerce-development/figma-ui-ux",
 
 };
 
@@ -118,9 +150,11 @@ export function getServiceItemHref(serviceName: string, groupId: string): string
   // If no specific route exists yet, send to the group hub page if available
   if (
     groupId === "ai-automation" ||
-    groupId === "marketing-seo" ||
+    groupId === "gmb-seo-aeo" ||
     groupId === "development" ||
-    groupId === "design"
+    groupId === "mobile-app-development" ||
+    groupId === "social-media-ppc" ||
+    groupId === "ecommerce-development"
   ) {
     return `/services/${groupId}`;
   }
