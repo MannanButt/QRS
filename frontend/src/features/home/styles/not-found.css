@@ -5,7 +5,7 @@
 .ds-not-found-back, .ds-not-found-primary, .ds-not-found-secondary { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, color 180ms ease; }
 .ds-not-found-back { color: var(--qrs-color-brand); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .ds-not-found-back:hover { color: var(--qrs-color-brand-strong); }
-.ds-not-found-main { position: relative; display: flex; flex: 1; align-items: center; justify-content: center; overflow: hidden; padding: 80px 24px; }
+.ds-not-found-main { position: relative; display: flex; flex: 1; align-items: center; justify-content: center; overflow: hidden; padding: 150px 24px 80px; }
 .ds-not-found-glow { position: absolute; width: 384px; height: 384px; border-radius: 50%; filter: blur(48px); pointer-events: none; }
 .ds-not-found-glow--one { top: 25%; left: 25%; background: rgba(216, 180, 254, .4); }
 .ds-not-found-glow--two { right: 25%; bottom: 25%; background: rgba(196, 181, 253, .3); }
@@ -20,4 +20,4 @@
 .ds-not-found-secondary { padding: 14px 24px; border: 1px solid #d8b4fe; border-radius: 999px; background: #fff; color: var(--qrs-color-brand-strong); font-size: 14px; font-weight: 600; box-shadow: 0 3px 8px rgba(76,29,149,.08); }
 .ds-not-found-secondary:hover { background: #f8f3ff; }
 .ds-not-found-footer { padding: 24px; border-top: 1px solid var(--qrs-color-border); color: #8b7ba2; text-align: center; font-size: 12px; }
-@media (max-width: 560px) { .ds-not-found-header { padding: 20px 16px; } .ds-not-found-brand { font-size: 17px; } .ds-not-found-back { font-size: 10px; } .ds-not-found-main { padding: 60px 16px; } .ds-not-found-actions { flex-direction: column; } .ds-not-found-primary, .ds-not-found-secondary { width: min(100%, 280px); justify-content: center; } }
+@media (max-width: 560px) { .ds-not-found-main { padding: 130px 16px 60px; } .ds-not-found-actions { flex-direction: column; } .ds-not-found-primary, .ds-not-found-secondary { width: min(100%, 280px); justify-content: center; } }

@@ -1,22 +1,12 @@
 import Link from "next/link";
-import { ArrowLeft, Home, Compass } from "lucide-react";
+import { Home, Compass } from "lucide-react";
 import { qrsSite } from "@/src/config/site";
+import { ServicePageHeader } from "@/src/features/services/components/ServicePageHeader";
 
 export default function NotFound() {
   return (
     <div className="ds-not-found-page">
-      {/* Top Header */}
-      <header className="ds-not-found-header">
-        <Link href="/" className="ds-not-found-brand">
-          {qrsSite.name}<span>.</span>
-        </Link>
-        <Link
-          href="/"
-          className="ds-not-found-back"
-        >
-          <ArrowLeft size={16} aria-hidden="true" /> Back to Home
-        </Link>
-      </header>
+      <ServicePageHeader />
 
       {/* Main 404 Hero */}
       <main className="ds-not-found-main">

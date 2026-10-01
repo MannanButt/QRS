@@ -1,7 +1,7 @@
 "use client";
 
 import { MouseEvent, useState } from "react";
-import { Facebook, Instagram, Linkedin, Mail, Phone, Youtube } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Youtube } from "lucide-react";
 import { Brand } from "@/src/components/brand/Brand";
 import { phoneHref, qrsSite, whatsappHref } from "@/src/config/site";
 import { claimMailSendPermission } from "@/src/lib/mailRateLimit";
@@ -9,7 +9,7 @@ import "@/src/features/home/styles/footer.css";
 
 export function AgencyFooter() {
   const [mailLimitMessage, setMailLimitMessage] = useState("");
-  const { contact, social } = qrsSite;
+  const { contact, location, social } = qrsSite;
 
   const handleEmailClick = (event: MouseEvent<HTMLAnchorElement>) => {
     const permission = claimMailSendPermission();
@@ -49,6 +49,9 @@ export function AgencyFooter() {
                   <Phone size={16} /> WhatsApp: 0312 4130449
                 </a>
               )}
+              <a href="/contact" className="vx-footer-contact-link">
+                <MapPin size={16} /> {location.address}
+              </a>
               {mailLimitMessage && <p role="status">{mailLimitMessage}</p>}
             </div>
 
@@ -113,6 +116,7 @@ export function AgencyFooter() {
             <ul>
               <li><a href="/about-company">About Company</a></li>
               <li><a href="/blogs">Blogs</a></li>
+              <li><a href="/contact">Contact Us</a></li>
               <li><a href="/book-a-demo">Schedule Meeting</a></li>
             </ul>
           </div>

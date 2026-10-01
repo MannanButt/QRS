@@ -1,13 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ArrowRight, ArrowUpRight, Check, Menu, PhoneCall, Star, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Menu, PhoneCall, Star, X } from "lucide-react";
 import { Brand } from "@/src/components/brand/Brand";
 import { AgencyFooter } from "@/src/components/layout/AgencyFooter";
 import { phoneHref, qrsSite } from "@/src/config/site";
 import { ResponsiveImage } from "@/src/components/ui/ResponsiveImage";
 import { heroImages } from "@/src/features/home/data/content";
+import { WhatsAppLeadBar } from "@/src/features/home/components/WhatsAppLeadBar";
 import { serviceMenuGroups } from "@/src/features/services/data/services";
+import { coreServiceMenu } from "@/src/features/services/data/coreServiceMenu";
 
 const reasonsToChooseQrs = [
   { number: "01", title: "One connected team", copy: "Strategy, design, engineering, and growth expertise work together from the start—so decisions stay aligned." },
@@ -101,6 +103,8 @@ const reviews = [
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const servicesMenuRef = useRef<HTMLDivElement>(null);
   const [activeHero, setActiveHero] = useState(0);
   const [activeApproach, setActiveApproach] = useState(1);
   const [activeReview, setActiveReview] = useState(0);
@@ -115,6 +119,27 @@ export default function HomePage() {
     }, 5000);
     return () => window.clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (!servicesOpen) return;
+
+    const closeOnOutsideClick = (event: PointerEvent) => {
+      if (!servicesMenuRef.current?.contains(event.target as Node)) setServicesOpen(false);
+    };
+    const closeOnScroll = () => setServicesOpen(false);
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setServicesOpen(false);
+    };
+
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    window.addEventListener("scroll", closeOnScroll, { passive: true });
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      window.removeEventListener("scroll", closeOnScroll);
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [servicesOpen]);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -157,7 +182,10 @@ export default function HomePage() {
     };
   }, []);
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setServicesOpen(false);
+  };
 
   return (
     <div className="qrs-page" id="top">
@@ -183,12 +211,32 @@ export default function HomePage() {
           <a href="#top" aria-label={`${qrsSite.name} home`} onClick={closeMenu}><Brand light /></a>
           <nav className={`qrs-nav${menuOpen ? " is-open" : ""}`} aria-label="Primary navigation">
             <a href="#top" onClick={closeMenu}>Home</a>
-            <a href="#services" onClick={closeMenu}>Services</a>
+            <div className="qrs-nav-services-dropdown" ref={servicesMenuRef}>
+              <button type="button" className="qrs-nav-services-trigger" aria-expanded={servicesOpen} aria-controls="home-service-menu" onClick={() => setServicesOpen((open) => !open)}>Services <ChevronDown size={15} aria-hidden="true" /></button>
+              {servicesOpen && (
+                <div className="qrs-home-service-menu" id="home-service-menu">
+                  <div className="qrs-home-service-menu-intro">
+                    <span>Our core services</span>
+                    <p>Focused capabilities to build, get found, and grow with confidence.</p>
+                    <a href="#services" onClick={closeMenu}>View all services <ArrowUpRight size={14} aria-hidden="true" /></a>
+                  </div>
+                  <div className="qrs-home-service-menu-groups">
+                    {coreServiceMenu.map((group) => (
+                      <section key={group.title}>
+                        <a href={group.href} className="qrs-home-service-menu-title" onClick={closeMenu}>{group.title}<ArrowUpRight size={14} aria-hidden="true" /></a>
+                        <p>{group.description}</p>
+                        <ul>{group.items.map((item) => <li key={item.label}><a href={item.href} onClick={closeMenu}>{item.label}</a></li>)}</ul>
+                      </section>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
             <a href="#projects" onClick={closeMenu}>Our projects</a>
             <a href="#reviews" onClick={closeMenu}>Reviews</a>
             <a href="/about-company" onClick={closeMenu}>About Company</a>
             <a href="/blogs" onClick={closeMenu}>Blogs</a>
-            <a href="#contact" onClick={closeMenu}>Contact</a>
+            <a href="/contact" onClick={closeMenu}>Contact</a>
             <a href={callNowHref} className="qrs-mobile-nav-action" onClick={closeMenu}>Call Now</a>
             <a href="/book-a-demo" className="qrs-mobile-nav-action" onClick={closeMenu}>Schedule Meeting</a>
           </nav>
@@ -374,6 +422,7 @@ export default function HomePage() {
       </main>
 
       <AgencyFooter />
+      <WhatsAppLeadBar />
     </div>
   );
 }

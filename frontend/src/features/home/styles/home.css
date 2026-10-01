@@ -66,6 +66,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .qrs-nav { display: flex; justify-content: center; gap: clamp(12px, 1.7vw, 28px); }
 .qrs-nav a { color: var(--qrs-color-text-muted); font-size: 13px; font-weight: 750; transition: color 180ms ease; }
 .qrs-nav a:hover { color: var(--qrs-color-brand); }
+.qrs-nav-services-dropdown { position: relative; }
+.qrs-nav-services-trigger { display: inline-flex; align-items: center; gap: 6px; padding: 0; border: 0; background: transparent; color: var(--qrs-color-text-muted); cursor: pointer; font: inherit; font-size: 13px; font-weight: 750; transition: color 180ms ease; }
+.qrs-nav-services-trigger:hover, .qrs-nav-services-trigger[aria-expanded="true"] { color: var(--qrs-color-brand); }
+.qrs-nav-services-trigger svg { transition: transform 180ms ease; }
+.qrs-nav-services-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+.qrs-home-service-menu { position: absolute; top: calc(100% + 22px); left: 50%; display: grid; grid-template-columns: minmax(190px, .68fr) minmax(0, 2.32fr); gap: 26px; width: min(970px, calc(100vw - 64px)); padding: 26px; border: 1px solid #ddccef; border-radius: 20px; background: #fff; box-shadow: 0 28px 60px rgba(33,14,69,.22); transform: translateX(-39%); animation: qrs-service-menu-enter 180ms ease both; }
+.qrs-home-service-menu-intro { padding: 6px 18px 6px 2px; border-right: 1px solid var(--qrs-color-border); }
+.qrs-home-service-menu-intro > span { color: var(--qrs-color-brand); font-size: 10px; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+.qrs-home-service-menu-intro p { margin-top: 12px; color: var(--qrs-color-text-muted); font-size: 13px; line-height: 1.65; }
+.qrs-home-service-menu-intro a { display: inline-flex; align-items: center; gap: 7px; margin-top: 22px; color: var(--qrs-color-brand-strong); font-size: 12px; font-weight: 850; }
+.qrs-home-service-menu-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.qrs-home-service-menu-title { display: flex; align-items: center; justify-content: space-between; gap: 6px; color: var(--qrs-color-ink) !important; font-size: 13px !important; font-weight: 850 !important; }
+.qrs-home-service-menu section > p { min-height: 58px; margin-top: 9px; color: var(--qrs-color-text-muted); font-size: 12px; line-height: 1.55; }
+.qrs-home-service-menu ul { display: grid; gap: 7px; margin: 16px 0 0; padding: 0; list-style: none; }
+.qrs-home-service-menu li a { color: #665678 !important; font-size: 12px !important; font-weight: 700 !important; }
+.qrs-home-service-menu li a:hover, .qrs-home-service-menu-title:hover { color: var(--qrs-color-brand) !important; }
+@keyframes qrs-service-menu-enter { from { opacity: 0; transform: translate(-39%, -8px); } to { opacity: 1; transform: translate(-39%, 0); } }
 .qrs-mobile-nav-action { display: none; }
 .qrs-header-actions { display: flex; align-items: center; gap: 10px; }
 .qrs-header-call, .qrs-header-cta, .qrs-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 850; transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease; }
@@ -199,6 +216,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .qrs-cta p { max-width: 610px; margin-top: 16px; color: rgba(255,255,255,.76); font-size: 15px; line-height: 1.7; }
 .qrs-cta .qrs-section-kicker { color: #d8b4fe; }
 
+/* Appears once visitors move beyond the hero and steps away before the footer. */
+.qrs-whatsapp-lead-bar { position: fixed; z-index: 30; right: 24px; bottom: 24px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 14px; width: min(670px, calc(100vw - 48px)); align-items: center; padding: 13px 14px 13px 16px; border: 1px solid rgba(109,40,217,.18); border-radius: 20px; background: rgba(255,255,255,.94); box-shadow: 0 20px 52px rgba(38,17,76,.22); backdrop-filter: blur(18px); opacity: 0; pointer-events: none; transform: translateY(18px); transition: opacity 220ms ease, transform 220ms ease; }
+.qrs-whatsapp-lead-bar.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.qrs-whatsapp-lead-profile { position: relative; display: grid; width: 52px; height: 52px; place-items: center; overflow: visible; border-radius: 50%; background: linear-gradient(135deg, #2b1258, #7e22ce); box-shadow: inset 0 0 0 3px #f3edff; color: #fff; font-family: var(--font-geist-mono), monospace; font-size: 12px; font-weight: 900; letter-spacing: -.06em; }
+.qrs-whatsapp-lead-profile i { position: absolute; right: 1px; bottom: 1px; width: 13px; height: 13px; border: 2px solid #fff; border-radius: 50%; background: #25d366; }
+.qrs-whatsapp-lead-copy { display: grid; min-width: 0; gap: 3px; }
+.qrs-whatsapp-lead-copy strong { color: var(--qrs-color-ink); font-family: var(--qrs-font-display); font-size: 16px; font-weight: 900; letter-spacing: -.025em; line-height: 1.12; }
+.qrs-whatsapp-lead-copy span { color: var(--qrs-color-text-muted); font-size: 12px; line-height: 1.35; }
+.qrs-whatsapp-lead-action { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; gap: 8px; padding: 0 17px; border-radius: 12px; background: #1fa855; box-shadow: 0 8px 18px rgba(21,128,61,.19); color: #fff; font-size: 12px; font-weight: 850; transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease; white-space: nowrap; }
+.qrs-whatsapp-lead-action:hover { background: #15803d; box-shadow: 0 11px 22px rgba(21,128,61,.28); transform: translateY(-1px); }
+.qrs-whatsapp-lead-close { display: grid; width: 30px; height: 30px; place-items: center; padding: 0; border: 0; border-radius: 50%; background: transparent; color: #746789; cursor: pointer; transition: background 180ms ease, color 180ms ease; }
+.qrs-whatsapp-lead-close:hover { background: #f0e8ff; color: var(--qrs-color-brand-strong); }
+
 @media (max-width: 1060px) {
   .qrs-approach-intro, .qrs-why-choose-intro, .qrs-services-heading, .qrs-projects-heading, .qrs-reviews-heading { grid-template-columns: 1fr; gap: 24px; }
   .qrs-approach-intro > p, .qrs-why-choose-intro > p, .qrs-services-heading > p, .qrs-projects-heading > p, .qrs-reviews-heading > p { max-width: 620px; }
@@ -209,6 +239,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .qrs-nav { position: absolute; z-index: 4; top: calc(100% - 8px); right: 0; left: 0; display: none; padding: 12px; border: 1px solid rgba(233,213,255,.28); border-radius: 18px; background: rgba(23,11,49,.96); box-shadow: 0 18px 38px rgba(23,11,49,.3); }
   .qrs-nav.is-open { display: grid; }
   .qrs-nav a { display: flex; min-height: 42px; align-items: center; padding: 0 12px; color: #f3e8ff; }
+  .qrs-nav-services-trigger { display: flex; min-height: 42px; width: 100%; align-items: center; justify-content: space-between; padding: 0 12px; color: #f3e8ff; }
+  .qrs-home-service-menu { position: static; display: grid; grid-template-columns: 1fr; gap: 14px; width: auto; margin: 2px 0 8px; padding: 13px; border-color: rgba(233,213,255,.25); border-radius: 13px; background: rgba(255,255,255,.08); box-shadow: none; transform: none; animation: none; }
+  .qrs-home-service-menu-intro { display: none; }
+  .qrs-home-service-menu-groups { grid-template-columns: 1fr; gap: 11px; }
+  .qrs-home-service-menu-groups section { padding: 10px; border: 1px solid rgba(233,213,255,.14); border-radius: 10px; background: rgba(255,255,255,.035); }
+  .qrs-home-service-menu-title { min-height: 0 !important; padding: 0 !important; color: #fff !important; }
+  .qrs-home-service-menu section > p { min-height: 0; margin-top: 7px; color: #d9ccef; font-size: 11px; }
+  .qrs-home-service-menu ul { gap: 5px; margin-top: 10px; }
+  .qrs-home-service-menu li a { min-height: 0 !important; padding: 2px 0 !important; color: #eadcff !important; font-size: 11px !important; }
   .qrs-menu-button { display: grid; }
   .qrs-header-call, .qrs-header-cta { display: none; }
 }
@@ -259,6 +298,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   .qrs-why-choose-card h3 { margin-top: 36px; }
   .qrs-project-card-body { padding: 24px; }
   .qrs-cta { gap: 28px; margin: 74px auto; padding: 31px 24px; border-radius: 24px; }
+  .qrs-whatsapp-lead-bar { right: 12px; bottom: 12px; left: 12px; grid-template-columns: auto minmax(0, 1fr) auto; gap: 10px; width: auto; padding: 11px; border-radius: 17px; }
+  .qrs-whatsapp-lead-profile { width: 44px; height: 44px; font-size: 11px; }
+  .qrs-whatsapp-lead-copy strong { font-size: 14px; }
+  .qrs-whatsapp-lead-copy span { display: none; }
+  .qrs-whatsapp-lead-action { min-height: 42px; padding: 0 13px; border-radius: 11px; }
+  .qrs-whatsapp-lead-action span { display: none; }
+  .qrs-whatsapp-lead-close { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

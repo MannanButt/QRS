@@ -13,6 +13,10 @@ export const qrsSite = {
   legalName: "QRS Technologies",
   tagline: "Technology that moves business forward.",
   description: "QRS Technologies helps businesses plan, build, automate, and grow with practical digital solutions.",
+  location: {
+    address: "Jail Road, Gulberg III, Lahore",
+    mapHref: "https://www.google.com/maps/search/?api=1&query=Jail+Road%2C+Gulberg+III%2C+Lahore",
+  },
   contact: {
     email: publicValue(process.env.NEXT_PUBLIC_QRS_CONTACT_EMAIL),
     primaryPhone: "03124130449",

@@ -13,6 +13,39 @@
 .qrs-about-intro-copy ul { display: grid; gap: 13px; margin: 30px 0 0; padding: 0; list-style: none; }
 .qrs-about-intro-copy li { display: flex; gap: 10px; align-items: flex-start; color: var(--qrs-color-text); font-size: 14px; font-weight: 750; line-height: 1.45; }
 .qrs-about-intro-copy svg { flex: 0 0 auto; color: #fff; border-radius: 50%; background: var(--qrs-color-brand); padding: 2px; }
+.qrs-about-capabilities { padding: 108px 0; background: #f3edff; }
+.qrs-about-capabilities-heading, .qrs-about-teams-heading { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(280px, .72fr); gap: 86px; align-items: end; }
+.qrs-about-capabilities h2, .qrs-about-location h2, .qrs-about-teams h2 { margin-top: 14px; color: var(--qrs-color-ink); font-family: var(--qrs-font-display); font-size: clamp(36px, 4.8vw, 62px); font-weight: 900; letter-spacing: -.06em; line-height: .98; }
+.qrs-about-capabilities-heading > p, .qrs-about-teams-heading > p { color: var(--qrs-color-text-muted); font-size: 16px; line-height: 1.75; }
+.qrs-about-capabilities-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 50px; }
+.qrs-about-capabilities-grid article { min-height: 280px; padding: 30px; border: 1px solid var(--qrs-color-border); border-radius: 20px; background: #fff; box-shadow: 0 15px 34px rgba(58,25,112,.07); transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease; }
+.qrs-about-capabilities-grid article:hover { border-color: #b99ae9; box-shadow: 0 20px 42px rgba(58,25,112,.12); transform: translateY(-4px); }
+.qrs-about-capabilities-grid span, .qrs-about-teams-grid article > span { color: var(--qrs-color-brand); font-family: var(--font-geist-mono), monospace; font-size: 11px; font-weight: 850; letter-spacing: .13em; }
+.qrs-about-capabilities-grid h3 { margin-top: 56px; color: var(--qrs-color-ink); font-family: var(--qrs-font-display); font-size: 29px; letter-spacing: -.045em; }
+.qrs-about-capabilities-grid p { margin-top: 14px; color: var(--qrs-color-text-muted); font-size: 14px; line-height: 1.7; }
+.qrs-about-location { padding: 110px 0; background: #fff; }
+.qrs-about-location-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(320px, .75fr); gap: 112px; align-items: center; }
+.qrs-about-location-grid > div > p { max-width: 635px; margin-top: 24px; color: var(--qrs-color-text-muted); font-family: Georgia, serif; font-size: 18px; line-height: 1.75; }
+.qrs-about-location-link { display: inline-flex; align-items: center; gap: 9px; min-height: 50px; margin-top: 29px; padding: 0 21px; border-radius: 999px; background: var(--qrs-color-brand); color: #fff; font-size: 13px; font-weight: 850; box-shadow: 0 10px 24px rgba(109,40,217,.25); transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease; }
+.qrs-about-location-link:hover { background: var(--qrs-color-brand-strong); box-shadow: 0 14px 30px rgba(109,40,217,.35); transform: translateY(-2px); }
+.qrs-about-location-card { position: relative; display: grid; justify-items: start; min-height: 315px; padding: 34px; overflow: hidden; border-radius: 24px; background: linear-gradient(135deg, #291153, #6d28d9); color: #fff; box-shadow: 0 24px 54px rgba(58,25,112,.25); transition: transform 180ms ease, box-shadow 180ms ease; }
+.qrs-about-location-card::after { position: absolute; right: -70px; bottom: -70px; width: 240px; height: 240px; border: 1px solid rgba(255,255,255,.25); border-radius: 50%; box-shadow: 0 0 0 34px rgba(255,255,255,.06), 0 0 0 68px rgba(255,255,255,.04); content: ""; }
+.qrs-about-location-card:hover { box-shadow: 0 30px 64px rgba(58,25,112,.32); transform: translateY(-4px); }
+.qrs-about-location-card > svg { color: #e9d5ff; }
+.qrs-about-location-card > span { margin-top: 38px; color: #d8b4fe; font-size: 10px; font-weight: 850; letter-spacing: .15em; }
+.qrs-about-location-card strong { max-width: 270px; margin-top: 10px; font-family: var(--qrs-font-display); font-size: clamp(25px, 3vw, 34px); letter-spacing: -.045em; line-height: 1.02; }
+.qrs-about-location-card em { z-index: 1; display: inline-flex; align-items: center; gap: 8px; margin-top: auto; font-size: 12px; font-style: normal; font-weight: 850; }
+.qrs-about-teams { padding: 110px 0; background: #170b31; color: #fff; }
+.qrs-about-teams .qrs-section-kicker { color: #d8b4fe; }
+.qrs-about-teams h2 { color: #fff; }
+.qrs-about-teams-heading > p { color: #e9d5ff; }
+.qrs-about-teams-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 50px; }
+.qrs-about-teams-grid article { min-height: 285px; padding: 24px; border: 1px solid rgba(233,213,255,.21); border-radius: 18px; background: rgba(255,255,255,.055); transition: transform 180ms ease, background 180ms ease, border-color 180ms ease; }
+.qrs-about-teams-grid article:hover { border-color: rgba(233,213,255,.55); background: rgba(255,255,255,.1); transform: translateY(-4px); }
+.qrs-about-teams-grid article > span { color: #d8b4fe; }
+.qrs-about-teams-grid h3 { margin-top: 48px; font-family: var(--qrs-font-display); font-size: 24px; letter-spacing: -.045em; line-height: 1.05; }
+.qrs-about-teams-grid strong { display: block; margin-top: 10px; color: #d8b4fe; font-size: 12px; line-height: 1.45; }
+.qrs-about-teams-grid p { margin-top: 13px; color: #eadcff; font-size: 13px; line-height: 1.65; }
 .qrs-principles { padding: 100px 0 110px; background: #f3edff; }
 .qrs-principles .qrs-content-shell { width: min(1450px, calc(100% - 48px)); }
 .qrs-principles-grid, .qrs-blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 52px; }
@@ -34,8 +67,9 @@
 .qrs-content-cta-link:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(23,11,49,.2); }
 
 @media (max-width: 900px) {
-  .qrs-content-section, .qrs-blog-heading { grid-template-columns: 1fr; gap: 28px; }
-  .qrs-principles-grid, .qrs-blog-grid { grid-template-columns: 1fr; }
+  .qrs-content-section, .qrs-blog-heading, .qrs-about-capabilities-heading, .qrs-about-location-grid, .qrs-about-teams-heading { grid-template-columns: 1fr; gap: 28px; }
+  .qrs-principles-grid, .qrs-blog-grid, .qrs-about-capabilities-grid { grid-template-columns: 1fr; }
+  .qrs-about-teams-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .qrs-content-cta { display: grid; }
 }
 
@@ -44,13 +78,19 @@
   .qrs-content-hero { min-height: 570px; padding: 155px 0 80px; }
   .qrs-content-hero h1 { font-size: clamp(45px, 13vw, 64px); }
   .qrs-content-hero p { font-size: 16px; }
-  .qrs-content-section, .qrs-blog-section { padding-block: 76px; }
+  .qrs-content-section, .qrs-blog-section, .qrs-about-capabilities, .qrs-about-location, .qrs-about-teams { padding-block: 76px; }
   .qrs-principles { padding-block: 76px; }
-  .qrs-content-section h2, .qrs-principles h2, .qrs-blog-heading h2, .qrs-content-cta h2 { font-size: clamp(34px, 10vw, 48px); }
+  .qrs-content-section h2, .qrs-principles h2, .qrs-blog-heading h2, .qrs-content-cta h2, .qrs-about-capabilities h2, .qrs-about-location h2, .qrs-about-teams h2 { font-size: clamp(34px, 10vw, 48px); }
   .qrs-about-intro-copy > p { font-size: 17px; }
-  .qrs-principles-grid, .qrs-blog-grid { margin-top: 34px; }
-  .qrs-principles-grid article, .qrs-blog-card { min-height: auto; padding: 24px; }
+  .qrs-principles-grid, .qrs-blog-grid, .qrs-about-capabilities-grid, .qrs-about-teams-grid { margin-top: 34px; }
+  .qrs-principles-grid article, .qrs-blog-card, .qrs-about-capabilities-grid article { min-height: auto; padding: 24px; }
   .qrs-principles-grid h3 { margin-top: 38px; }
+  .qrs-about-capabilities-grid h3 { margin-top: 38px; }
+  .qrs-about-location-grid > div > p { font-size: 17px; }
+  .qrs-about-location-card { min-height: 280px; padding: 27px; }
+  .qrs-about-teams-grid { grid-template-columns: 1fr; }
+  .qrs-about-teams-grid article { min-height: auto; padding: 24px; }
+  .qrs-about-teams-grid h3 { margin-top: 34px; }
   .qrs-content-cta { gap: 28px; margin-block: 74px; padding: 30px 24px; border-radius: 24px; }
   .qrs-content-cta-link { justify-content: center; width: 100%; }
 }

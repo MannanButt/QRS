@@ -1,6 +1,7 @@
 import { ArrowLeft, Mail } from "lucide-react";
 import { AgencyFooter } from "@/src/components/layout/AgencyFooter";
 import { qrsSite } from "@/src/config/site";
+import { ServicePageHeader } from "@/src/features/services/components/ServicePageHeader";
 import "@/src/features/legal/styles/legal.css";
 
 type LegalPageProps = {
@@ -17,7 +18,9 @@ export function LegalPage({ type }: LegalPageProps) {
     : `The terms that apply when you use the ${qrsSite.name} website or engage our services.`;
 
   return (
-    <main className="ds-legal-page">
+    <div className="ds-legal-page">
+      <ServicePageHeader />
+      <main>
       <section className="ds-legal-hero">
         <div className="ds-legal-hero-inner">
           <a href="/" className="ds-legal-back"><ArrowLeft size={16} /> Back to home</a>
@@ -38,9 +41,9 @@ export function LegalPage({ type }: LegalPageProps) {
           </div>
         </aside>
       </section>
-
+      </main>
       <AgencyFooter />
-    </main>
+    </div>
   );
 }
 
