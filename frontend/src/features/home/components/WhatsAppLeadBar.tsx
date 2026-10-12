@@ -1,10 +1,16 @@
 "use client";
 
 import { MessageCircle, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { qrsSite, whatsappHref } from "@/src/config/site";
 
 export function WhatsAppLeadBar() {
+  const isMounted = useSyncExternalStore(
+    () => () => undefined,
+    () => true,
+    () => false,
+  );
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   const whatsappNumber = qrsSite.contact.whatsappNumber;
@@ -29,43 +35,49 @@ export function WhatsAppLeadBar() {
     };
   }, []);
 
-  if (!whatsappNumber) return null;
+  if (!isMounted || !whatsappNumber) return null;
 
   const visible = isVisible && !isDismissed;
 
-  return (
+  return createPortal(
     <aside
       className={`qrs-whatsapp-lead-bar${visible ? " is-visible" : ""}`}
       aria-hidden={!visible}
-      aria-label="WhatsApp contact"
+      aria-label="WhatsApp quick contact"
     >
-      <div className="qrs-whatsapp-lead-profile" aria-hidden="true">
-        <span>QRS</span>
-        <i />
+      <div className="qrs-whatsapp-lead-inner">
+        <div className="qrs-whatsapp-lead-profile" aria-hidden="true">
+          <span>QRS</span>
+          <i />
+        </div>
+        <div className="qrs-whatsapp-lead-copy">
+          <strong>Need help with your next digital project?</strong>
+          <span>Chat directly with our specialists on WhatsApp.</span>
+        </div>
+        <div className="qrs-whatsapp-lead-center">
+          <a
+            href={whatsappHref(whatsappNumber)}
+            className="qrs-whatsapp-lead-action"
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={visible ? 0 : -1}
+          >
+            <span className="qrs-gold-shine" aria-hidden="true" />
+            <MessageCircle size={17} aria-hidden="true" />
+            <span>Chat on WhatsApp</span>
+          </a>
+        </div>
+        <button
+          type="button"
+          className="qrs-whatsapp-lead-close"
+          onClick={() => setIsDismissed(true)}
+          aria-label="Dismiss WhatsApp contact bar"
+          tabIndex={visible ? 0 : -1}
+        >
+          <X size={16} aria-hidden="true" />
+        </button>
       </div>
-      <div className="qrs-whatsapp-lead-copy">
-        <strong>Need help with your next digital move?</strong>
-        <span>Message the QRS team on WhatsApp.</span>
-      </div>
-      <a
-        href={whatsappHref(whatsappNumber)}
-        className="qrs-whatsapp-lead-action"
-        target="_blank"
-        rel="noopener noreferrer"
-        tabIndex={visible ? 0 : -1}
-      >
-        <MessageCircle size={18} aria-hidden="true" />
-        <span>Chat on WhatsApp</span>
-      </a>
-      <button
-        type="button"
-        className="qrs-whatsapp-lead-close"
-        onClick={() => setIsDismissed(true)}
-        aria-label="Dismiss WhatsApp contact bar"
-        tabIndex={visible ? 0 : -1}
-      >
-        <X size={17} aria-hidden="true" />
-      </button>
-    </aside>
+    </aside>,
+    document.body,
   );
 }

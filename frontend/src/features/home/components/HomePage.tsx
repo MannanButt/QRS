@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, ArrowUpRight, Check, ChevronDown, Menu, PhoneCall, Star, X } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown, Menu, MessageCircle, PhoneCall, Star, X } from "lucide-react";
 import { Brand } from "@/src/components/brand/Brand";
 import { AgencyFooter } from "@/src/components/layout/AgencyFooter";
-import { phoneHref, qrsSite } from "@/src/config/site";
+import { phoneHref, qrsSite, whatsappHref } from "@/src/config/site";
 import { ResponsiveImage } from "@/src/components/ui/ResponsiveImage";
-import { heroImages } from "@/src/features/home/data/content";
+import { heroCards } from "@/src/features/home/data/content";
 import { WhatsAppLeadBar } from "@/src/features/home/components/WhatsAppLeadBar";
 import { serviceMenuGroups } from "@/src/features/services/data/services";
 import { coreServiceMenu } from "@/src/features/services/data/coreServiceMenu";
@@ -115,7 +115,7 @@ export default function HomePage() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const timer = window.setInterval(() => {
-      setActiveHero((current) => (current + 1) % heroImages.length);
+      setActiveHero((current) => (current + 1) % heroCards.length);
     }, 5000);
     return () => window.clearInterval(timer);
   }, []);
@@ -190,20 +190,37 @@ export default function HomePage() {
   return (
     <div className="qrs-page" id="top">
       <section className="qrs-hero" aria-label={`${qrsSite.name} digital services`}>
-        <div className="qrs-hero-media" aria-hidden="true">
-          {heroImages.map((image, index) => (
-            <div className={`qrs-hero-slide${index === activeHero ? " is-active" : ""}`} key={`${image.src}-${index}`}>
+        <div className="qrs-hero-media" aria-label="Core services showcase">
+          {heroCards.map((card, index) => (
+            <div
+              className={`qrs-hero-slide${index === activeHero ? " is-active" : ""}`}
+              key={card.id}
+            >
               <ResponsiveImage
-                source={image.src}
+                source={card.src}
                 widths={[768, 1280, 1920]}
                 sizes="(max-width: 960px) 100vw, 50vw"
-                alt=""
-                style={{ objectPosition: image.position }}
+                alt={card.alt}
+                style={{ objectPosition: card.position }}
                 loading={index === 0 ? "eager" : "lazy"}
                 fetchPriority={index === 0 ? "high" : "low"}
               />
             </div>
           ))}
+
+          <div className="qrs-hero-media-dots" role="tablist" aria-label="Hero image cards">
+            {heroCards.map((card, index) => (
+              <button
+                type="button"
+                key={card.id}
+                role="tab"
+                aria-selected={index === activeHero}
+                aria-label={`View image card ${index + 1}`}
+                className={`qrs-hero-media-dot${index === activeHero ? " is-active" : ""}`}
+                onClick={() => setActiveHero(index)}
+              />
+            ))}
+          </div>
         </div>
         <div className="qrs-hero-overlay" aria-hidden="true" />
 
@@ -237,10 +254,34 @@ export default function HomePage() {
             <a href="/about-company" onClick={closeMenu}>About Company</a>
             <a href="/blogs" onClick={closeMenu}>Blogs</a>
             <a href="/contact" onClick={closeMenu}>Contact</a>
+            {qrsSite.contact.whatsappNumber && (
+              <a
+                href={whatsappHref(qrsSite.contact.whatsappNumber)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="qrs-mobile-nav-action qrs-mobile-nav-whatsapp"
+                onClick={closeMenu}
+              >
+                <MessageCircle size={15} aria-hidden="true" /> Chat on WhatsApp
+              </a>
+            )}
             <a href={callNowHref} className="qrs-mobile-nav-action" onClick={closeMenu}>Call Now</a>
             <a href="/book-a-demo" className="qrs-mobile-nav-action" onClick={closeMenu}>Schedule Meeting</a>
           </nav>
           <div className="qrs-header-actions">
+            {qrsSite.contact.whatsappNumber && (
+              <a
+                href={whatsappHref(qrsSite.contact.whatsappNumber)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="qrs-header-whatsapp-gold"
+                aria-label="Start WhatsApp conversation"
+              >
+                <span className="qrs-header-whatsapp-shimmer" aria-hidden="true" />
+                <MessageCircle size={15} aria-hidden="true" />
+                <span>WhatsApp</span>
+              </a>
+            )}
             <a href={callNowHref} className="qrs-header-call">Call Now <PhoneCall size={15} aria-hidden="true" /></a>
             <a href="/book-a-demo" className="qrs-header-cta">Schedule Meeting <ArrowUpRight size={15} aria-hidden="true" /></a>
             <button type="button" className="qrs-menu-button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>
